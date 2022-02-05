@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;    //DataAnnotation'ları Kullanabilmek İçin Bu Kütüphaneyi Ekledik.
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,9 +9,18 @@ namespace EntityLayer.Concreate
 {
     public class Category   //Başlıkları kategorize eden classs
     {
+        [Key]
         public int CategoryID { get; set; }
+
+
+        [StringLength(50)]
         public string CategoryName { get; set; }
+
+
+        [StringLength(200)]
         public string CategoryDescription { get; set; }
+
+
         public bool CategoryStatus { get; set; }      //Aktif/Pasif için bu özellik kullanılacak.
 
 

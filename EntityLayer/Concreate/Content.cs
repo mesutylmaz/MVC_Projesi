@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;    //DataAnnotation'ları Kullanabilmek İçin Bu Kütüphaneyi Ekledik.
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,11 +9,18 @@ namespace EntityLayer.Concreate
 {
     public class Content   //İçerik class'ı
     {
+        [Key]
         public int ContentID { get; set; }
-        public string ContentValue { get; set; }
+
+
+        [StringLength(1000)]
+        public string ContentValue { get; set; }    //İçerik metni
+
+
         public DateTime ContentDate { get; set; }
         //Content Yazarı
         //Content Ana Başlığı
+
 
 
 
