@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;      //Expression için
 using System.Text;
 using System.Threading.Tasks;
 
@@ -17,12 +18,12 @@ namespace DataAccessLayer.Abstract
         //Böylece aynı metotları tekrar tekrar yazmak yada
         //Interface olarak yazıp impleent etmek zorunda kalmayacağız.
 
-        List<T> ListCategories();        //Tüm category listesini göster
+        List<T> Listele();        //Tüm veri listesini göster
 
         void Insert(T t);     //Girilen veriyi(t) T tipindeki tabloma ekle
         void Update(T t);     //Girilen veriyi(t) T tipindeki tablomda güncelle
         void Delete(T t);     //Girilen veriyi(t) T tipindeki tablomdan sil
 
-        
+        List<T> List(Expression<Func<T, bool>> filter);     //List metodu ile sorgulama yapıcaz.
     }
 }
