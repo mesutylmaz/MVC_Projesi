@@ -1,0 +1,31 @@
+﻿@using EntityLayer.Concreate    @*Category Tablosundan veri çekeceğimiz için bu tablonun bulunduğu Katmanı tanımladık*@
+@model List<Category>  
+    @*Category Tablosunu listelemek için listeleme olarak gösterdik*@
+
+@{
+    Layout = null;
+}
+
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+<br />
+
+<table class="table table-bordered table-hover">
+    @*table-border=Kenarlıklı bir tablo yapısı sağlar.*@
+    @*table-hover=Üzerine gelindiğinde satırı gri yapar ve satırı belirgin kılar.*@
+    <tr>
+        @*(Table Row)*@
+        <th>ID</th>     @*(Table Head)*@
+        <th>Adı</th>
+        <th>Açıklama</th>
+        <th>Durum</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.CategoryID</td>
+            <td>@item.CategoryName</td>
+            <td>@item.CategoryDescription</td>
+            <td>@item.CategoryStatus</td>
+        </tr>
+    }
+</table>

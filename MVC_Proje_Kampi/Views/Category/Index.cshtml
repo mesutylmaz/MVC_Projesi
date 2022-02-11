@@ -1,0 +1,57 @@
+﻿
+@{
+    Layout = null;
+}
+
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+
+<h3>MVC Kamp Tablo Örneği - Kategori</h3>
+<br />
+
+<table class="table table-bordered table-hover">
+    @*table-border=Kenarlıklı bir tablo yapısı sağlar.*@
+    @*table-hover=Üzerine gelindiğinde satırı gri yapar ve satırı belirgin kılar.*@
+    <tr>
+        @*(Table Row)*@
+        <th>ID</th>     @*(Table Head)*@
+        <th>Adı</th>
+        <th>Açıklama</th>
+        <th>Durum</th>
+        <th>Güncelle</th>
+    </tr>
+    <tr>
+        @*(Table Row)*@
+        <td>1</td>     @*(Table Head)*@
+        <td>Eğitim</td>
+        <td>Açıklama Yaptık</td>
+        <td>True</td>
+        <td><button class="btn btn-success">GÜNCELLE</button></td>
+    </tr>
+    <tr>
+        @*(Table Row)*@
+        <td>2</td>     @*(Table Head)*@
+        <td>Spor</td>
+        <td>Açıklama Yapıldı</td>
+        <td>True</td>
+        <td><button class="btn btn-success">GÜNCELLE</button></td>
+    </tr>
+    <tr>
+        @*(Table Row)*@
+        <td>3</td>     @*(Table Head)*@
+        <td>Kitap</td>
+        <td>Açıklama Yapılacak</td>
+        <td>True</td>
+        <td><button class="btn btn-success">GÜNCELLE</button></td>
+    </tr>
+    <tr>
+        @*(Table Row)*@
+        <td>4</td>     @*(Table Head)*@
+        <td>Sinema</td>
+        <td>Açıklama Bekleniyor</td>
+        <td>True</td>
+        <td><button class="btn btn-success">GÜNCELLE</button></td>
+    </tr>
+</table>
+<button class="btn btn-info">Yeni Kategori</button>
+<button class="btn btn-warning">Kategori Listesi</button>
+<button class="btn btn-danger">Kategori Açıklamaları</button>
