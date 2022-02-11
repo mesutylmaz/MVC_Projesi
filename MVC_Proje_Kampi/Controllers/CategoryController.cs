@@ -1,4 +1,5 @@
 ﻿using BusinessLayer.Concreate;      //CategoryManager için
+using EntityLayer.Concreate;    //Category için
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,6 +23,12 @@ namespace MVC_Proje_Kampi.Controllers
         {
             var categoryValues = categoryManager.GetAllBusinessLayer();
             return View(categoryValues);
+        }
+
+        public ActionResult AddCategory(Category category)
+        {
+            categoryManager.CategoryAddBusinessLayer(category);
+            return RedirectToAction("GetCategoryList");
         }
     }
 }
