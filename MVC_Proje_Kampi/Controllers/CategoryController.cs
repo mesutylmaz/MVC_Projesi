@@ -21,13 +21,25 @@ namespace MVC_Proje_Kampi.Controllers
 
         public ActionResult GetCategoryList()
         {
-            var categoryValues = categoryManager.GetAllBusinessLayer();
-            return View(categoryValues);
+            //var categoryValues = categoryManager.GetAllBusinessLayer();
+            //return View(categoryValues);
+            return View();
         }
 
+
+
+
+        [HttpGet]
+        public ActionResult AddCategory()
+        {
+            return View();
+        }
+
+
+        [HttpPost]
         public ActionResult AddCategory(Category category)
         {
-            categoryManager.CategoryAddBusinessLayer(category);
+            //categoryManager.CategoryAddBusinessLayer(category);
             return RedirectToAction("GetCategoryList");
         }
     }
