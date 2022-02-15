@@ -1,5 +1,8 @@
 ﻿using BusinessLayer.Concreate;      //CategoryManager için
+using BusinessLayer.Validation_Rules_or_Fluent_Validation;      //CategoryValidator
+using DataAccessLayer.EntityFramework;      //EfCategoryDal
 using EntityLayer.Concreate;    //Category için
+using FluentValidation.Results;     //ValidationResult
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +14,7 @@ namespace MVC_Proje_Kampi.Controllers
     public class CategoryController : Controller
     {
 
-        CategoryManager categoryManager = new CategoryManager();
+        CategoryManager categoryManager = new CategoryManager(new EfCategoryDal());
 
         // GET: Category
         public ActionResult Index()
@@ -19,28 +22,57 @@ namespace MVC_Proje_Kampi.Controllers
             return View();
         }
 
-        public ActionResult GetCategoryList()
+
+
+        public ActionResult KategorileriListele()
         {
-            //var categoryValues = categoryManager.GetAllBusinessLayer();
-            //return View(categoryValues);
-            return View();
+            var categoryValues = categoryManager.CategoryListBusinessLayer();
+            return View(categoryValues);
         }
 
 
 
 
         [HttpGet]
-        public ActionResult AddCategory()
+        public ActionResult KategoriEkle()
         {
             return View();
         }
 
 
+
+
         [HttpPost]
-        public ActionResult AddCategory(Category category)
+        public ActionResult KategoriEkle(Category category)
         {
             //categoryManager.CategoryAddBusinessLayer(category);
-            return RedirectToAction("GetCategoryList");
+
+
+
+            CategoryValidator categoryValidator = new CategoryValidator();      
+            //Category nesnesine ait Validasyonları,
+            //categoryValidator nesnesine atadık.
+
+            ValidationResult results = categoryValidator.Validate(category);    
+            //Gönderilen parametrenin(category) validasyonunu kontrol edip(Validate(category)),
+            //results nesnesine atadık.
+
+
+            if(results.IsValid)     //results nesnesi olumluysa, yani validasyon şartlarını sağlıyorsa;
+            {
+                categoryManager.CategoryAddBusinessLayer(category); //category nesnesini Categorlere ekle,
+                return RedirectToAction("KategorileriListele");     //KategorileriListele Action'ını çalıştır.
+            }
+            else
+            {
+                foreach (var item in results.Errors) //category parametresinin validasyon sonucundaki Hataları dolaş
+                {
+                    ModelState.AddModelError(item.PropertyName, item.ErrorMessage);     
+                    //Hatalı Property Adını ve Hata Mesajını Modelimin Hatalarına Ekle
+                }
+            }
+
+            return View();
         }
     }
 }

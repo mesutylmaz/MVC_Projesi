@@ -1,6 +1,5 @@
 ﻿using BusinessLayer.Abstract;   //ICategoryService 
 using DataAccessLayer.Abstract;     //ICategoryDal
-using DataAccessLayer.Concreate.Repositories;   //GenericRepository
 using EntityLayer.Concreate;    //Category
 using System;
 using System.Collections.Generic;
@@ -15,30 +14,19 @@ namespace BusinessLayer.Concreate
 
         ICategoryDal _categoryDal;
 
-
-        public List<Category> GetCategoryList()     //ICategoryService içindeki metot, implement edilerek geldi.
+        public CategoryManager(ICategoryDal iCategoryDal)   //ctor
         {
-            throw new NotImplementedException();
+            _categoryDal = iCategoryDal;
         }
 
-        //GenericRepository<Category> repo = new GenericRepository<Category>();
+        public void CategoryAddBusinessLayer(Category category) //ICategoryService içindeki metot, implement edilerek geldi.
+        {
+            _categoryDal.Insert(category);
+        }
 
-        //public List<Category>GetAllBusinessLayer()
-        //{
-        //    return repo.Listele();
-        //}
-
-        //public void CategoryAddBusinessLayer(Category category)
-        //{
-        //    if(category.CategoryName==null || category.CategoryName.Length<=3 ||
-        //    category.CategoryDescription==""||category.CategoryName.Length>=51)
-        //    {
-        //        //Hata Mesajı
-        //    }
-        //    else
-        //    {
-        //        repo.Insert(category);
-        //    }
-        //}
+        public List<Category> CategoryListBusinessLayer()     //ICategoryService içindeki metot, implement edilerek geldi.
+        {
+            return _categoryDal.Listele();
+        }
     }
 }
