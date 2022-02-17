@@ -14,7 +14,7 @@
     @*table-hover=Üzerine gelindiğinde satırı gri yapar ve satırı belirgin kılar.*@
     <tr>
         @*(Table Row)*@
-        <th>ID</th>     @*(Table Head)*@
+        <th>#</th>     @*(Table Head)*@
         <th>Adı</th>
         <th>Açıklama</th>
         <th>Durum</th>
@@ -22,7 +22,7 @@
     @foreach (var item in Model)
     {
         <tr>
-            <td>@item.CategoryID</td>
+            <th>@item.CategoryID</th>       @*Bu sütun kalın olsun diye td değil th kullandık*@
             <td>@item.CategoryName</td>
             <td>@item.CategoryDescription</td>
             <td>@item.CategoryStatus</td>

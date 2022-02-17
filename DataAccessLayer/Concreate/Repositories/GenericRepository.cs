@@ -30,6 +30,7 @@ namespace DataAccessLayer.Concreate.Repositories
             context.SaveChanges();
         }
 
+
         public void Insert(T t)
         {
             _object.Add(t);
@@ -52,6 +53,12 @@ namespace DataAccessLayer.Concreate.Repositories
         public void Update(T t)
         {
             context.SaveChanges();
+        }
+
+        public T Get(Expression<Func<T, bool>> filter)
+        {
+            return _object.SingleOrDefault(filter);     //Sadece 1 adet değer döndürecek. Yani;
+            //Index yada List metotları, tablonun tamamını getirirken; Get metodu sadece ilgili ID'ye sahip değeri getirecek.
         }
     }
 }

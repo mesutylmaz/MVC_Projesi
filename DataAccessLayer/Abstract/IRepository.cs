@@ -9,7 +9,6 @@ namespace DataAccessLayer.Abstract
 {
     public interface IRepository<T>     //Her Tablo tipi için ortak bir Interface tanımladık. 
     {
-
         //CRUD işlemlerini burada metot olarak tanımlayacağız.
 
         //T burada Category, Writer vb. Entity Class'larını temsil ediyor.
@@ -25,5 +24,7 @@ namespace DataAccessLayer.Abstract
         void Delete(T t);     //Girilen veriyi(t) T tipindeki tablomdan sil
 
         List<T> List(Expression<Func<T, bool>> filter);     //List metodu ile sorgulama yapıcaz.
+
+        T Get(Expression<Func<T, bool>> filter);
     }
 }

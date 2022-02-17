@@ -24,9 +24,21 @@ namespace BusinessLayer.Concreate
             _categoryDal.Insert(category);
         }
 
+
         public List<Category> CategoryListBusinessLayer()     //ICategoryService içindeki metot, implement edilerek geldi.
         {
             return _categoryDal.Listele();
+        }
+
+        public Category GetByID(int id)
+        {
+            return _categoryDal.Get(x => x.CategoryID == id);
+        }
+
+
+        public void CategoryDeleteBusinessLayer(Category category)
+        {
+            _categoryDal.Delete(category);
         }
     }
 }

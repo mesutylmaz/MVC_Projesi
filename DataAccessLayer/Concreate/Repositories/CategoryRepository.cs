@@ -22,6 +22,7 @@ namespace DataAccessLayer.Concreate.Repositories
             context.SaveChanges();
         }
 
+
         public void Insert(Category category)
         {
             categories.Add(category);
@@ -46,6 +47,12 @@ namespace DataAccessLayer.Concreate.Repositories
         public void Update(Category category)
         {
             context.SaveChanges();
+        }
+
+
+        public Category Get(Expression<Func<Category, bool>> filter)
+        {
+            throw new NotImplementedException();
         }
     }
 }
