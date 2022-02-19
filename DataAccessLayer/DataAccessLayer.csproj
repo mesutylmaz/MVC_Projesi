@@ -71,6 +71,10 @@
     <Compile Include="Migrations\202202061453137_ikinci.designer.cs">
       <DependentUpon>202202061453137_ikinci.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202202191941471_yazarTablosuGuncelleme.cs" />
+    <Compile Include="Migrations\202202191941471_yazarTablosuGuncelleme.designer.cs">
+      <DependentUpon>202202191941471_yazarTablosuGuncelleme.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -87,6 +91,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202202061453137_ikinci.resx">
       <DependentUpon>202202061453137_ikinci.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202202191941471_yazarTablosuGuncelleme.resx">
+      <DependentUpon>202202191941471_yazarTablosuGuncelleme.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />
