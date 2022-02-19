@@ -60,5 +60,22 @@ namespace MVC_Proje_Kampi.Controllers
             categoryManager.CategoryDeleteBusinessLayer(kategori);
             return RedirectToAction("Index");
         }
+
+
+        [HttpGet]
+        public ActionResult KategoriGüncelle(int id)
+        {
+            var kategori = categoryManager.GetByID(id);
+            return View(kategori);
+        }
+
+
+
+        [HttpPost]
+        public ActionResult KategoriGüncelle(Category category)
+        {
+            categoryManager.CategoryUpdateBusinessLayer(category);
+            return RedirectToAction("Index");
+        }
     }
 }

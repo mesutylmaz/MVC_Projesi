@@ -12,7 +12,7 @@ namespace BusinessLayer.Abstract
         List<Category> CategoryListBusinessLayer();     //Categori Listesi İçin
         void CategoryAddBusinessLayer(Category category);       //Kategori Eklemek İçin
         Category GetByID(int id);   //GenericRepository'deki Get metodu için
-
         void CategoryDeleteBusinessLayer(Category category);   //Kategori Silmek için
+        void CategoryUpdateBusinessLayer(Category category);    //Kategori Güncellemek için
     }
 }

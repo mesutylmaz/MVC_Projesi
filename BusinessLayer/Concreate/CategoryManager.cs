@@ -40,5 +40,10 @@ namespace BusinessLayer.Concreate
         {
             _categoryDal.Delete(category);
         }
+
+        public void CategoryUpdateBusinessLayer(Category category)
+        {
+            _categoryDal.Update(category);
+        }
     }
 }

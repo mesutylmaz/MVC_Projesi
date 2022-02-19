@@ -26,16 +26,29 @@ namespace DataAccessLayer.Concreate.Repositories
 
         public void Delete(T t)
         {
-            _object.Remove(t);
+            var silinecekDeger = context.Entry(t);
+            silinecekDeger.State = EntityState.Deleted;
+            //_object.Remove(t);     //Buranın yerine üstteki 2 satır yazıldı.
             context.SaveChanges();
         }
 
 
         public void Insert(T t)
         {
-            _object.Add(t);
+            var eklenecekDeger = context.Entry(t);
+            eklenecekDeger.State = EntityState.Added;
+            //_object.Add(t);       //Buranın yerine üstteki 2 satır yazıldı.
             context.SaveChanges();
         }
+
+
+        public void Update(T t)
+        {
+            var guncellenecekDeger = context.Entry(t);
+            guncellenecekDeger.State = EntityState.Modified;
+            context.SaveChanges();
+        }
+        
 
 
         public List<T> List(Expression<Func<T, bool>> filter)
@@ -49,11 +62,6 @@ namespace DataAccessLayer.Concreate.Repositories
             return _object.ToList();
         }
 
-
-        public void Update(T t)
-        {
-            context.SaveChanges();
-        }
 
         public T Get(Expression<Func<T, bool>> filter)
         {
